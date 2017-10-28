@@ -1,0 +1,28 @@
+<html>
+<head>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="{{
+  url_for('static', filename='jquery.js') }}">\x3C/script>')</script>
+</head>
+
+
+<body>
+<p><button id="start" onclick="start()">start camera!</button></p>
+
+<div>
+ <div style="float:left;margin-right:5px;">
+  <p><video id="video-tag" width="240" height="180" autoplay=true/></p>
+ </div>
+ <div style="float:left">
+  <p><img id="image-tag" width="240"> </img></p>
+ </div>
+</div>
+
+  
+<div style="width: 240px">
+  <p><button onclick="takePhoto()">take photo</button></p>
+</div>
+
+<script src="{{url_for('static', filename='main3.js') }}"></script>
+</body>
+</html>
