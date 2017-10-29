@@ -1,4 +1,3 @@
-import cognitive_face as CF
 import httplib, urllib, base64, requests, json
 import os
 

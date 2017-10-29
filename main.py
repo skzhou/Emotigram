@@ -16,8 +16,6 @@ def home():
 @app.route('/upload', methods = ['POST'])
 def get_post_javascript_data():
 	url = str(request.form['url'])
-	print(url)
-	# img_data = url
 	image_64_decode = base64.decodestring(url[22:]) 
 	img_name = 'decoded.png'
 	image_result = open(img_name, 'wb') # create a writable image and write the decoding result
