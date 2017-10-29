@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import os
 import base64
+import face
 
 app = Flask(__name__)
 # app.config.from_object('config')
@@ -21,7 +22,7 @@ def get_post_javascript_data():
 	img_name = 'decoded.png'
 	image_result = open(img_name, 'wb') # create a writable image and write the decoding result
 	image_result.write(image_64_decode)
-
+	face.face_cognition(img_name)
 	return ('', 204)
 
 # @app.route('/get_img')
