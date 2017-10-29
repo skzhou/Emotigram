@@ -34,19 +34,6 @@ $(document).ready(function () {
     // });
 
 
-var el = document.getElementById("home")
-dynamics.animate(el, {
-  translateX: 350,
-  scale: 2,
-  opacity: 0.5
-}, {
-  type: dynamics.spring,
-  frequency: 200,
-  friction: 200,
-  duration: 1500
-})
-
-
 
 
 
@@ -88,19 +75,19 @@ function checkScrollSection() {
   //     console.log('');
     curr_section = "section6";
   }
-    else if($(this).scrollTop()<=$('#section7').position().top){
+    else if($(this).scrollTop()<=$('#section7').position().top+300){
   //     console.log('');
     curr_section = "section7";
   }
-    else if($(this).scrollTop()<=$('#section8').position().top){
+    else if($(this).scrollTop()<=$('#section8').position().top+300){
   //     console.log('');
     curr_section = "section8";
   }
-    else if($(this).scrollTop()<=$('#section9').position().top){
+    else if($(this).scrollTop()<=$('#section9').position().top+300){
   //     console.log('');
     curr_section = "section9";
   }
-  else if($(this).scrollTop()<=$('#section10').position().top){
+  else if($(this).scrollTop()<=$('#section10').position().top+300){
   //     console.log('');
     curr_section = "section10";
   }
