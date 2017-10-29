@@ -7,7 +7,7 @@ var video = document.querySelector('#camera-stream'),
     delete_photo_btn = document.querySelector('#delete-photo'),
     download_photo_btn = document.querySelector('#download-photo'),
     error_message = document.querySelector('#error-message');
-
+    fixed_header = document.querySelector('.fixed-header');
 
 // The getUserMedia interface is used for handling camera input.
 // Some browsers need a prefix so here we're covering all the options
@@ -186,9 +186,9 @@ function hideUI(){
 // Check scroll position and add/remove background to navbar
 function checkScrollPosition() {
     if($(window).scrollTop() > 50) {
-      $(".fixed-header").addClass("scroll");
+      $(fixed_header).addClass("scroll");
   } else {        
-      $(".fixed-header").removeClass("scroll");
+      $(fixed_header).removeClass("scroll");
   }
 }
 
