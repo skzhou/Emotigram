@@ -89,15 +89,17 @@ $(window).on('scroll', function() {
                   data: {url: snap},
                   type: 'POST',
                   success: function(response) {
-                      console.log(response);
+                      console.log(response.emotion);
                   },
                   error: function(error) {
                       console.log(error);
                   }
               });
+
+              
           });
 
-    }, 1000);
+    }, 500);
 });
 
 
