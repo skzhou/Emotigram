@@ -45,17 +45,26 @@ function takePhoto() {
   imageCapturer.takePhoto()
     .then((blob) => {
 
-      var fd = new FormData();
-      fd.append('data', blob);
-      $.ajax({
-          type: 'POST',
-          url: '/upload',
-          data: fd,
-          processData: false,
-          contentType: false
-      }).done(function(data) {
-             console.log(data);
+      // var fd = new FormData();
+      // fd.append('data', blob);
+      // $.ajax({
+      //     type: 'POST',
+      //     url: '/upload',
+      //     data: fd,
+      //     processData: false,
+      //     contentType: false
+      // }).done(function(data) {
+      //        console.log(data);
+      // });
+
+
+      console.log("asdfs");
+
+
+      $.post( "/upload", {
+          data: blob 
       });
+
 
       console.log("Photo taken: " + blob.type + ", " + blob.size + "B")
       imageTag.src = URL.createObjectURL(blob);
@@ -64,3 +73,6 @@ function takePhoto() {
       console.error("takePhoto() failed: ", e);
     });
 }
+
+
+

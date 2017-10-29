@@ -81,8 +81,9 @@ take_photo_btn.addEventListener("click", function(e){
   // Set the href attribute of the download button to the snap url.
   download_photo_btn.href = snap;
 
-  // Pause video playback of stream.
-  video.pause();
+
+
+
 
   $(function() {
       $.ajax({
@@ -97,6 +98,14 @@ take_photo_btn.addEventListener("click", function(e){
           }
       });
   });
+
+
+
+
+
+
+  // Pause video playback of stream.
+  video.pause();
 
 });
 
@@ -115,6 +124,9 @@ delete_photo_btn.addEventListener("click", function(e){
 
   // Resume playback of stream.
   video.play();
+
+});
+
 
 });
 
@@ -175,4 +187,6 @@ function hideUI(){
   snap.classList.remove("visible");
   error_message.classList.remove("visible");
 }
+
+
 
