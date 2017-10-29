@@ -58,7 +58,7 @@ var timer = null;
 console.log(timer);
 $(window).on('scroll', function() {
       checkScrollPosition();  
-
+      $("body").css("background-position","500% " + ($(this).scrollTop() / 2) + "px");
     if(timer !== null) {
         console.log(timer);
         clearTimeout(timer);        
