@@ -17,8 +17,16 @@ def home():
 def emotions():
 	return render_template('emotions.html')
 
+@app.route('/happiness')
+def happiness():
+	return render_template('happiness.html')
 
-@app.route('/upload', methods = ['POST'])
+@app.route('/about')
+def about():
+	return render_template('about.html')
+
+
+@app.route('/upload', methods = ['POST', 'GET'])
 def get_post_javascript_data():
 	url = str(request.form['url'])
 	image_64_decode = base64.decodestring(url[22:]) 

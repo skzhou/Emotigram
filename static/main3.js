@@ -10,22 +10,22 @@ function checkScrollPosition() {
 
 $(document).ready(function () {   
     // Single page nav
-    $('.fixed-header').singlePageNav({
-        offset: 59,
-        filter: ':not(.external)',
-        updateHash: true        
-    });
+    // $('.fixed-header').singlePageNav({
+    //     offset: 59,
+    //     filter: ':not(.external)',
+    //     updateHash: true        
+    // });
 
     checkScrollPosition();
 
     // nav bar
-    $('.navbar-toggle').click(function(){
-        $('.main-menu').toggleClass('show');
-    });
+    // $('.navbar-toggle').click(function(){
+    //     $('.main-menu').toggleClass('show');
+    // });
 
-    $('.main-menu a').click(function(){
-        $('.main-menu').removeClass('show');
-    });
+    // $('.main-menu a').click(function(){
+    //     $('.main-menu').removeClass('show');
+    // });
 
     // hover animation
     // $('.emojis').hover(function () {
@@ -138,6 +138,7 @@ $(window).on('scroll', function() {
                         setTimeout(function(){ $("#"+section+ " > #mydiv > #e3").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
                         var str = $("#"+section+ " > #mydiv > #e8").text();
+                        console.log(str);
                         var num = parseInt(str);
                         num = num+1;
                         $("#"+section+ " > #mydiv > #e8").html(num.toString());
