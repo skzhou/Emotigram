@@ -137,26 +137,46 @@ $(window).on('scroll', function() {
                         $("#"+section+ " > #mydiv > #e3").addClass('animated bounce');
                         setTimeout(function(){ $("#"+section+ " > #mydiv > #e3").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
+                        var str = $("#"+section+ " > #mydiv > #e8").text();
+                        var num = parseInt(str);
+                        num = num+1;
+                        $("#"+section+ " > #mydiv > #e8").html(num.toString());
                       }
                       else if (response.emotion == 'happiness') {
                         $("#"+section+ " > #mydiv > #e1").addClass('animated bounce');
                         setTimeout(function(){ $("#"+section+ " > #mydiv > #e1").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
+                        var str = $("#"+section+ " > #mydiv > #e6").text();
+                        var num = parseInt(str);
+                        num = num+1;
+                        $("#"+section+ " > #mydiv > #e6").html(num.toString());
                       }
                       else if (response.emotion == 'sadness') {
                         $("#"+section+ " > #mydiv > #e5").addClass('animated bounce');  
                         setTimeout(function(){ $("#"+section+ " > #mydiv > #e5").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
+                        var str = $("#"+section+ " > #mydiv > #e10").text();
+                        var num = parseInt(str);
+                        num = num+1;
+                        $("#"+section+ " > #mydiv > #e10").html(num.toString());
                       }
                       else if (response.emotion == 'fear' || response.emotion == 'surprise') {
                         $("#"+section+ " > #mydiv > #e2").addClass('animated bounce');
                         setTimeout(function(){ $("#"+section+ " > #mydiv > #e2").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
+                        var str = $("#"+section+ " > #mydiv > #e7").text();
+                        var num = parseInt(str);
+                        num = num+1;
+                        $("#"+section+ " > #mydiv > #e7").html(num.toString());
                       }
                       else if (response.emotion == 'anger') {
                         $("#"+section+ " > #mydiv > #e4").addClass('animated bounce');
                         setTimeout(function(){ $("#"+section+ " > #mydiv > #e4").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
+                        var str = $("#"+section+ " > #mydiv > #e9").text();
+                        var num = parseInt(str);
+                        num = num+1;
+                        $("#"+section+ " > #mydiv > #e9").html(num.toString());
                       }
 
                   },
