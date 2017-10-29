@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route('/index')
 @app.route('/home')
 def home():
-	return render_template('index.html')
+	return render_template('index2.html')
 
 @app.route('/upload', methods = ['POST'])
 def get_post_javascript_data():

@@ -1,13 +1,132 @@
+
+// Check scroll position and add/remove background to navbar
+function checkScrollPosition() {
+    if($(window).scrollTop() > 50) {
+      $(".fixed-header").addClass("scroll");
+  } else {        
+      $(".fixed-header").removeClass("scroll");
+  }
+}
+
+$(document).ready(function () {   
+    // Single page nav
+    $('.fixed-header').singlePageNav({
+        offset: 59,
+        filter: ':not(.external)',
+        updateHash: true        
+    });
+
+    checkScrollPosition();
+
+    // nav bar
+    $('.navbar-toggle').click(function(){
+        $('.main-menu').toggleClass('show');
+    });
+
+    $('.main-menu a').click(function(){
+        $('.main-menu').removeClass('show');
+    });
+});
+
+// $(window).on("scroll", function() {
+// });
+
+function checkScrollSection() {
+  var curr_section = 0;
+  if($(this).scrollTop()<=$('#section1').position().top){
+  //     console.log('');
+    curr_section = 1;
+  }
+  else if($(this).scrollTop()<=$('#section2').position().top){
+  //     console.log('');
+    curr_section = 2;
+  }
+  else if($(this).scrollTop()<=$('#section3').position().top){
+  //     console.log('');
+    curr_section = 3;
+  }
+  else if($(this).scrollTop()<=$('#section4').position().top){
+  //     console.log('');
+    curr_section = 4;
+  }
+  console.log(curr_section);
+  return curr_section;
+}
+
+
+var timer = null;
+console.log(timer);
+$(window).on('scroll', function() {
+      checkScrollPosition();  
+
+    if(timer !== null) {
+        console.log(timer);
+        clearTimeout(timer);        
+    }
+    timer = setTimeout(function() {
+
+          var section = checkScrollSection();
+
+          var snap = takeSnapshot();
+
+          // Show image. 
+          // image.setAttribute('src', snap);
+          // image.classList.add("visible");
+
+          // Enable delete and save buttons
+          // delete_photo_btn.classList.remove("disabled");
+          // download_photo_btn.classList.remove("disabled");
+
+          // Set the href attribute of the download button to the snap url.
+          // download_photo_btn.href = snap;
+
+          // Pause video playback of stream.
+          // video.pause();
+
+          $(function() {
+              $.ajax({
+                  url: '/upload',
+                  data: {url: snap},
+                  type: 'POST',
+                  success: function(response) {
+                      console.log(response);
+                  },
+                  error: function(error) {
+                      console.log(error);
+                  }
+              });
+          });
+
+    }, 1000);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // References to all the element we will need.
-var video = document.querySelector('#camera-stream'),
-    image = document.querySelector('#snap'),
-    start_camera = document.querySelector('#start-camera'),
-    controls = document.querySelector('.controls'),
-    take_photo_btn = document.querySelector('#take-photo'),
-    delete_photo_btn = document.querySelector('#delete-photo'),
-    download_photo_btn = document.querySelector('#download-photo'),
-    error_message = document.querySelector('#error-message');
-    fixed_header = document.querySelector('.fixed-header');
+var video = document.querySelector('#camera-stream');
+    // image = document.querySelector('#snap'),
+    // start_camera = document.querySelector('#start-camera'),
+    // controls = document.querySelector('.controls'),
+    // take_photo_btn = document.querySelector('#take-photo'),
+    // delete_photo_btn = document.querySelector('#delete-photo'),
+    // download_photo_btn = document.querySelector('#download-photo'),
+    // error_message = document.querySelector('#error-message');
 
 // The getUserMedia interface is used for handling camera input.
 // Some browsers need a prefix so here we're covering all the options
@@ -18,7 +137,7 @@ navigator.getMedia = ( navigator.getUserMedia ||
 
 
 if(!navigator.getMedia){
-  displayErrorMessage("Your browser doesn't have support for the navigator.getUserMedia interface.");
+  console.log("Your browser doesn't have support for the navigator.getUserMedia interface.");
 }
 else{
 
@@ -36,9 +155,9 @@ else{
 
       // Play the video element to start the stream.
       video.play();
-      video.onplay = function() {
-        showVideo();
-      };
+      // video.onplay = function() {
+      //   showVideo();
+      // };
 
     },
     // Error Callback
@@ -53,80 +172,80 @@ else{
 
 // Mobile browsers cannot play video without user input,
 // so here we're using a button to start it manually.
-start_camera.addEventListener("click", function(e){
+// start_camera.addEventListener("click", function(e){
 
-  e.preventDefault();
+//   e.preventDefault();
 
-  // Start video playback manually.
-  video.play();
-  showVideo();
+//   // Start video playback manually.
+//   video.play();
+//   showVideo();
 
-});
-
-
-take_photo_btn.addEventListener("click", function(e){
-
-  e.preventDefault();
-
-  var snap = takeSnapshot();
-
-  // Show image. 
-  image.setAttribute('src', snap);
-  image.classList.add("visible");
-
-  // Enable delete and save buttons
-  delete_photo_btn.classList.remove("disabled");
-  download_photo_btn.classList.remove("disabled");
-
-  // Set the href attribute of the download button to the snap url.
-  download_photo_btn.href = snap;
-
-  // Pause video playback of stream.
-  video.pause();
-
-  $(function() {
-      $.ajax({
-          url: '/upload',
-          data: {url: snap},
-          type: 'POST',
-          success: function(response) {
-              console.log(response);
-          },
-          error: function(error) {
-              console.log(error);
-          }
-      });
-  });
-
-});
+// });
 
 
-delete_photo_btn.addEventListener("click", function(e){
+// take_photo_btn.addEventListener("click", function(e){
 
-  e.preventDefault();
+//   e.preventDefault();
 
-  // Hide image.
-  image.setAttribute('src', "");
-  image.classList.remove("visible");
+//   var snap = takeSnapshot();
 
-  // Disable delete and save buttons
-  delete_photo_btn.classList.add("disabled");
-  download_photo_btn.classList.add("disabled");
+//   // Show image. 
+//   // image.setAttribute('src', snap);
+//   // image.classList.add("visible");
 
-  // Resume playback of stream.
-  video.play();
+//   // Enable delete and save buttons
+//   delete_photo_btn.classList.remove("disabled");
+//   download_photo_btn.classList.remove("disabled");
 
-});
+//   // Set the href attribute of the download button to the snap url.
+//   download_photo_btn.href = snap;
+
+//   // Pause video playback of stream.
+//   video.pause();
+
+//   $(function() {
+//       $.ajax({
+//           url: '/upload',
+//           data: {url: snap},
+//           type: 'POST',
+//           success: function(response) {
+//               console.log(response);
+//           },
+//           error: function(error) {
+//               console.log(error);
+//           }
+//       });
+//   });
+
+// });
+
+
+// delete_photo_btn.addEventListener("click", function(e){
+
+//   e.preventDefault();
+
+//   // Hide image.
+//   image.setAttribute('src', "");
+//   image.classList.remove("visible");
+
+//   // Disable delete and save buttons
+//   delete_photo_btn.classList.add("disabled");
+//   download_photo_btn.classList.add("disabled");
+
+//   // Resume playback of stream.
+//   video.play();
+
+// });
 
 
 
-function showVideo(){
-  // Display the video stream and the controls.
+// function showVideo(){
+//   // Display the video stream and the controls.
 
-  hideUI();
-  video.classList.add("visible");
-  controls.classList.add("visible");
-}
+//   hideUI();
+//   video.classList.add("visible");
+//   controls.classList.add("visible");
+// }
 
 
 function takeSnapshot(){
@@ -153,68 +272,37 @@ function takeSnapshot(){
 }
 
 
-function displayErrorMessage(error_msg, error){
-  error = error || "";
-  if(error){
-    console.log(error);
-  }
+// function displayErrorMessage(error_msg, error){
+//   error = error || "";
+//   if(error){
+//     console.log(error);
+//   }
 
-  error_message.innerText = error_msg;
+//   error_message.innerText = error_msg;
 
-  hideUI();
-  error_message.classList.add("visible");
-}
-
-
-function hideUI(){
-  // Helper function for clearing the app UI.
-
-  controls.classList.remove("visible");
-  start_camera.classList.remove("visible");
-  video.classList.remove("visible");
-  snap.classList.remove("visible");
-  error_message.classList.remove("visible");
-}
+//   hideUI();
+//   error_message.classList.add("visible");
+// }
 
 
+// function hideUI(){
+//   // Helper function for clearing the app UI.
+
+//   controls.classList.remove("visible");
+//   start_camera.classList.remove("visible");
+//   video.classList.remove("visible");
+//   snap.classList.remove("visible");
+//   error_message.classList.remove("visible");
+// }
 
 
 
 
 
 
-// Check scroll position and add/remove background to navbar
-function checkScrollPosition() {
-    if($(window).scrollTop() > 50) {
-      $(fixed_header).addClass("scroll");
-  } else {        
-      $(fixed_header).removeClass("scroll");
-  }
-}
 
-$(document).ready(function () {   
-    // Single page nav
-    $('.fixed-header').singlePageNav({
-        offset: 59,
-        filter: ':not(.external)',
-        updateHash: true        
-    });
 
-    checkScrollPosition();
 
-    // nav bar
-    $('.navbar-toggle').click(function(){
-        $('.main-menu').toggleClass('show');
-    });
-
-    $('.main-menu a').click(function(){
-        $('.main-menu').removeClass('show');
-    });
-});
-
-$(window).on("scroll", function() {
-    checkScrollPosition();    
-});
 
 
 
