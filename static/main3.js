@@ -147,26 +147,28 @@ $(window).on('scroll', function() {
                   success: function(response) {
                       if (response.emotion == 'neutral') {
 
-                        $("#"+section+ " > #mydiv > #e3").animate({height: '+=100'});
+                        $("#"+section+ " > #mydiv > #e3").addClass('animated bounce');
+                        setTimeout(function(){ $("#"+section+ " > #mydiv > #e3").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
                       }
                       else if (response.emotion == 'happiness') {
-                        $("#"+section+ " > #mydiv > #e1").removeClass('animated bounce');
-                        $("#"+section+ " > #mydiv > #e1").addClass('animated rubberBand');
+                        $("#"+section+ " > #mydiv > #e1").addClass('animated bounce');
+                        setTimeout(function(){ $("#"+section+ " > #mydiv > #e1").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
                       }
                       else if (response.emotion == 'sadness') {
-                        $("#"+section+ " > #mydiv > #e5").removeClass('animated bounce');
-                        $("#"+section+ " > #mydiv > #e5").addClass('animated rubberBand');                        console.log(response.emotion);
+                        $("#"+section+ " > #mydiv > #e5").addClass('animated bounce');  
+                        setTimeout(function(){ $("#"+section+ " > #mydiv > #e5").removeClass('animated bounce');},1000)
+                        console.log(response.emotion);
                       }
                       else if (response.emotion == 'fear' || response.emotion == 'surprise') {
-                        $("#"+section+ " > #mydiv > #e2").removeClass('animated bounce');
-                        $("#"+section+ " > #mydiv > #e2").addClass('animated rubberBand'); 
+                        $("#"+section+ " > #mydiv > #e2").addClass('animated bounce');
+                        setTimeout(function(){ $("#"+section+ " > #mydiv > #e2").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
                       }
                       else if (response.emotion == 'anger') {
-                        $("#"+section+ " > #mydiv > #e4").removeClass('animated bounce');
-                        $("#"+section+ " > #mydiv > #e4").addClass('animated rubberBand'); 
+                        $("#"+section+ " > #mydiv > #e4").addClass('animated bounce');
+                        setTimeout(function(){ $("#"+section+ " > #mydiv > #e4").removeClass('animated bounce');},1000)
                         console.log(response.emotion);
                       }
 
