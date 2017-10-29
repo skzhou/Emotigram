@@ -13,7 +13,12 @@ app = Flask(__name__)
 def home():
 	return render_template('index2.html')
 
-@app.route('/upload', methods = ['POST', 'GET'])
+@app.route('/emotions')
+def emotions():
+	return render_template('emotions.html')
+
+
+@app.route('/upload', methods = ['POST'])
 def get_post_javascript_data():
 	url = str(request.form['url'])
 	image_64_decode = base64.decodestring(url[22:]) 
