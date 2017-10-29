@@ -65,26 +65,26 @@ function checkScrollSection() {
   //     console.log('');
     curr_section = "section5";
   }
-  //   else if($(this).scrollTop()<=$('#section6').position().top){
-  // //     console.log('');
-  //   curr_section = "section6";
-  // }
-  //   else if($(this).scrollTop()<=$('#section7').position().top){
-  // //     console.log('');
-  //   curr_section = "section7";
-  // }
-  //   else if($(this).scrollTop()<=$('#section8').position().top){
-  // //     console.log('');
-  //   curr_section = "section8";
-  // }
-  //   else if($(this).scrollTop()<=$('#section9').position().top){
-  // //     console.log('');
-  //   curr_section = "section9";
-  // }
-  // else if($(this).scrollTop()<=$('#section10').position().top){
-  // //     console.log('');
-  //   curr_section = "section10";
-  // }
+    else if($(this).scrollTop()<=$('#section6').position().top){
+  //     console.log('');
+    curr_section = "section6";
+  }
+    else if($(this).scrollTop()<=$('#section7').position().top){
+  //     console.log('');
+    curr_section = "section7";
+  }
+    else if($(this).scrollTop()<=$('#section8').position().top){
+  //     console.log('');
+    curr_section = "section8";
+  }
+    else if($(this).scrollTop()<=$('#section9').position().top){
+  //     console.log('');
+    curr_section = "section9";
+  }
+  else if($(this).scrollTop()<=$('#section10').position().top){
+  //     console.log('');
+    curr_section = "section10";
+  }
   console.log(curr_section);
 
   return curr_section;
@@ -127,23 +127,27 @@ $(window).on('scroll', function() {
                   type: 'POST',
                   success: function(response) {
                       if (response.emotion == 'neutral') {
-                        $("#"+section+ " > #e3").addClass('animated rubberBand');
+                        $("#"+section+ " > #mydiv > #e3").removeClass('animated bounce');
+                        $("#"+section+ " > #mydiv > #e3").addClass('animated bounce');
                         console.log(response.emotion);
                       }
                       else if (response.emotion == 'happiness') {
-                        $("#"+section+ " > #e1").hide();
+                        $("#"+section+ " > #mydiv > #e1").removeClass('animated bounce');
+                        $("#"+section+ " > #mydiv > #e1").addClass('animated rubberBand');
                         console.log(response.emotion);
                       }
                       else if (response.emotion == 'sadness') {
-                        $("#"+section+ " > #e5").hide();
-                        console.log(response.emotion);
+                        $("#"+section+ " > #mydiv > #e5").removeClass('animated bounce');
+                        $("#"+section+ " > #mydiv > #e5").addClass('animated rubberBand');                        console.log(response.emotion);
                       }
                       else if (response.emotion == 'fear' || response.emotion == 'surprise') {
-                        $("#"+section+ " > #e2").hide();
+                        $("#"+section+ " > #mydiv > #e2").removeClass('animated bounce');
+                        $("#"+section+ " > #mydiv > #e2").addClass('animated rubberBand'); 
                         console.log(response.emotion);
                       }
                       else if (response.emotion == 'anger') {
-                        $("#"+section+ " > #e4").hide();
+                        $("#"+section+ " > #mydiv > #e4").removeClass('animated bounce');
+                        $("#"+section+ " > #mydiv > #e4").addClass('animated rubberBand'); 
                         console.log(response.emotion);
                       }
 
