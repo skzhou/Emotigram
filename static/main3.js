@@ -26,30 +26,67 @@ $(document).ready(function () {
     $('.main-menu a').click(function(){
         $('.main-menu').removeClass('show');
     });
+
+    // hover animation
+    // $('.emojis').hover(function () {
+    //   $(this).addClass('animated bounce');
+      
+    // });
 });
 
 // $(window).on("scroll", function() {
 // });
 
+
+
+
+
+
 function checkScrollSection() {
-  var curr_section = 0;
+  // $('#e11').animateCss('rubberBand');
+  var curr_section = "section0";
   if($(this).scrollTop()<=$('#section1').position().top){
   //     console.log('');
-    curr_section = 1;
+    curr_section = "section1";
   }
   else if($(this).scrollTop()<=$('#section2').position().top){
   //     console.log('');
-    curr_section = 2;
+    curr_section = "section2";
   }
   else if($(this).scrollTop()<=$('#section3').position().top){
   //     console.log('');
-    curr_section = 3;
+    curr_section = "section3";
   }
   else if($(this).scrollTop()<=$('#section4').position().top){
   //     console.log('');
-    curr_section = 4;
+    curr_section = "section4";
   }
+    else if($(this).scrollTop()<=$('#section5').position().top){
+  //     console.log('');
+    curr_section = "section5";
+  }
+  //   else if($(this).scrollTop()<=$('#section6').position().top){
+  // //     console.log('');
+  //   curr_section = "section6";
+  // }
+  //   else if($(this).scrollTop()<=$('#section7').position().top){
+  // //     console.log('');
+  //   curr_section = "section7";
+  // }
+  //   else if($(this).scrollTop()<=$('#section8').position().top){
+  // //     console.log('');
+  //   curr_section = "section8";
+  // }
+  //   else if($(this).scrollTop()<=$('#section9').position().top){
+  // //     console.log('');
+  //   curr_section = "section9";
+  // }
+  // else if($(this).scrollTop()<=$('#section10').position().top){
+  // //     console.log('');
+  //   curr_section = "section10";
+  // }
   console.log(curr_section);
+
   return curr_section;
 }
 
@@ -89,7 +126,27 @@ $(window).on('scroll', function() {
                   data: {url: snap},
                   type: 'POST',
                   success: function(response) {
-                      console.log(response.emotion);
+                      if (response.emotion == 'neutral') {
+                        $("#"+section+ " > #e3").addClass('animated rubberBand');
+                        console.log(response.emotion);
+                      }
+                      else if (response.emotion == 'happiness') {
+                        $("#"+section+ " > #e1").hide();
+                        console.log(response.emotion);
+                      }
+                      else if (response.emotion == 'sadness') {
+                        $("#"+section+ " > #e5").hide();
+                        console.log(response.emotion);
+                      }
+                      else if (response.emotion == 'fear' || response.emotion == 'surprise') {
+                        $("#"+section+ " > #e2").hide();
+                        console.log(response.emotion);
+                      }
+                      else if (response.emotion == 'anger') {
+                        $("#"+section+ " > #e4").hide();
+                        console.log(response.emotion);
+                      }
+
                   },
                   error: function(error) {
                       console.log(error);
