@@ -32,6 +32,25 @@ $(document).ready(function () {
     //   $(this).addClass('animated bounce');
       
     // });
+
+
+var el = document.getElementById("home")
+dynamics.animate(el, {
+  translateX: 350,
+  scale: 2,
+  opacity: 0.5
+}, {
+  type: dynamics.spring,
+  frequency: 200,
+  friction: 200,
+  duration: 1500
+})
+
+
+
+
+
+
 });
 
 // $(window).on("scroll", function() {
@@ -45,27 +64,27 @@ $(document).ready(function () {
 function checkScrollSection() {
   // $('#e11').animateCss('rubberBand');
   var curr_section = "section0";
-  if($(this).scrollTop()<=$('#section1').position().top){
+  if($(this).scrollTop()<=$('#section1').position().top+300){
   //     console.log('');
     curr_section = "section1";
   }
-  else if($(this).scrollTop()<=$('#section2').position().top){
+  else if($(this).scrollTop()<=$('#section2').position().top+300){
   //     console.log('');
     curr_section = "section2";
   }
-  else if($(this).scrollTop()<=$('#section3').position().top){
+  else if($(this).scrollTop()<=$('#section3').position().top+300){
   //     console.log('');
     curr_section = "section3";
   }
-  else if($(this).scrollTop()<=$('#section4').position().top){
+  else if($(this).scrollTop()<=$('#section4').position().top+300){
   //     console.log('');
     curr_section = "section4";
   }
-    else if($(this).scrollTop()<=$('#section5').position().top){
+    else if($(this).scrollTop()<=$('#section5').position().top+300){
   //     console.log('');
     curr_section = "section5";
   }
-    else if($(this).scrollTop()<=$('#section6').position().top){
+    else if($(this).scrollTop()<=$('#section6').position().top+300){
   //     console.log('');
     curr_section = "section6";
   }
@@ -127,8 +146,8 @@ $(window).on('scroll', function() {
                   type: 'POST',
                   success: function(response) {
                       if (response.emotion == 'neutral') {
-                        $("#"+section+ " > #mydiv > #e3").removeClass('animated bounce');
-                        $("#"+section+ " > #mydiv > #e3").addClass('animated bounce');
+
+                        $("#"+section+ " > #mydiv > #e3").animate({height: '+=100'});
                         console.log(response.emotion);
                       }
                       else if (response.emotion == 'happiness') {
